@@ -1,0 +1,37 @@
+<div class = "container">
+<mat-table [dataSource]="getCartItems()" >
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef >Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef >Author</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.author}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef >Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.quantity }}
+            <div class="icon-container">
+             <mat-icon (click)="editModal(element)">edit</mat-icon>
+            <mat-icon (click)="deleteModal(element)">delete</mat-icon>
+        </div>
+        </mat-cell>
+    </ng-container>
+  
+
+    <mat-header-row *matHeaderRowDef="displayedColumns">
+
+    </mat-header-row>
+    <mat-row *matRowDef="let rows; columns: displayedColumns;">
+
+    </mat-row>
+    
+</mat-table>
+
+<section>
+    <h1>Total price: {{cartPrice}}</h1>
+    <button  mat-raised-button color="primary" (click)="buyBooks()">Buy</button>
+</section>
+</div>

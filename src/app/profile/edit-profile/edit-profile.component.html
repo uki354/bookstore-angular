@@ -1,0 +1,29 @@
+<section>
+    <h1 mat-dialog-title>Edit profile</h1>
+    <mat-dialog-content *ngIf="data | async as user">
+        <form #f="ngForm" (ngSubmit)="save(f)" fxLayout="column">
+            <mat-form-field>
+        <p>Email: <input matInput type="text" name="email" [(ngModel)]="user.email" /></p>
+    </mat-form-field>
+    <mat-form-field>
+        <p>First name: <input matInput type="text"  name="firstName" [(ngModel)]="user.firstName" /></p>
+        </mat-form-field>
+        <mat-form-field>
+        <p>Last name: <input matInput type="text"  name="lastName" [(ngModel)]="user.lastName" /></p>
+    </mat-form-field>
+    <mat-form-field>
+        <p>Address: <input  matInput type="text"  name="address" [(ngModel)]="user.address" /></p>
+        </mat-form-field>
+        <mat-form-field>
+        <p>Mobile Phone: <input matInput type="text"  name="mobilePhone" [(ngModel)]="user.mobilePhone" /></p>
+    </mat-form-field>
+        <button mat-raised-button color = "primary" type="submit">Save</button>
+    </form>
+    </mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="warn" [mat-dialog-close]="false">Cancel</button>
+    
+</mat-dialog-actions>
+
+    
+</section>

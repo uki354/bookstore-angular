@@ -1,0 +1,18 @@
+.icon-container {
+    margin-left: auto;
+    display: flex;
+    gap: 12px;
+  }
+
+  mat-icon:hover{
+    cursor: pointer;
+  }
+
+  .container{
+    width: 80%;
+    margin:auto
+  }
+
+  button{
+    float:right;
+  }

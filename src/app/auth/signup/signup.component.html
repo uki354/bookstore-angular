@@ -1,0 +1,56 @@
+<section fxLayout="column" fxLayoutAlign="center center">
+    <div class="container">
+        <h1> Sign Up</h1>
+    <form fxLayout="column" fxLayoutAlign="center"
+    #f="ngForm" (ngSubmit)="onSubmit(f)"> 
+        <mat-form-field>
+            <input type="email" matInput placeholder="Your email" ngModel name="email" required email #emailInput="ngModel">
+            <mat-error *ngIf="emailInput.hasError('required')">Field should not be empty</mat-error>
+            <mat-error *ngIf="!emailInput.hasError('required')">Not a valid email adress</mat-error>
+
+        </mat-form-field>
+        <mat-form-field hintLabel="Please enter minimum 8 chars">
+            <input type="password" matInput placeholder="Your password" ngModel name="password" required minlength="8" #passInput="ngModel">
+            <mat-error *ngIf="passInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input type="password" matInput placeholder="Confirm password" ngModel name="confirmPassword" required minlength="8" #confirmPassInput="ngModel">
+            <mat-error *ngIf="confirmPassInput.value && passInput.value !== confirmPassInput.value">Password doesn't match</mat-error>
+            <mat-error *ngIf="confirmPassInput.hasError('required')">Field should not be empty</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="text" matInput placeholder="First name" ngModel name="firstName" required  #firstName="ngModel">
+            <mat-error *ngIf="passInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Last name" ngModel name="lastName" required  #lastName="ngModel">
+            <mat-error *ngIf="passInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field hintLabel="Please enter minimum 8 chars">
+            <input type="text" matInput placeholder="Address" ngModel name="address" required  #address="ngModel">
+            <mat-error *ngIf="passInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input type="text" matInput placeholder="Mobile phone" ngModel name="mobilePhone" required  #mobilePhone="ngModel">
+            <mat-error *ngIf="passInput.hasError('required')">Field should not be empty</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput placeholder="Your date of birth" ngModel name="birthdate" required [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">submit</button>
+
+        
+    </form>
+</div>
+
+</section>

@@ -1,0 +1,70 @@
+<div class="container">
+
+    <section>
+        <h1>
+            All booking's books
+        </h1>
+    </section>
+
+    <div fxLayoutAlign="end">
+      <mat-form-field>
+          <input matInput type="text" (keyup)="doFilter($any($event.target).value)" placeholder="Filter/pretraga">
+      </mat-form-field>
+  </div>
+
+<mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Author</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.author}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="issuedAt">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Issued at</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.issuedAt| date}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pages">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Pages</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.numOfPages | number}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="publication">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Publication</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.publication }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Genre</mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.genre[0].name}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+  </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <button mat-icon-button (click)="addToCart(element)">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns">
+
+    </mat-header-row>
+    <mat-row *matRowDef="let rows; columns: displayedColumns;" >
+
+    </mat-row>
+    
+</mat-table>
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,20]"></mat-paginator>
+  
+</div>
